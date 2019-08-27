@@ -10,11 +10,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class OrderReceiptTest {
     @Test
     public void shouldPrintCustomerInformationOnOrder() {
+        //given
         Order order = new Order("Mr X", "Chicago, 60601", new ArrayList<LineItem>());
         OrderReceipt receipt = new OrderReceipt(order);
-
+        //when
         String output = receipt.printReceipt();
-
+        //then
         assertThat(output).contains("Mr X", "Chicago, 60601");
     }
 
@@ -29,12 +30,13 @@ public class OrderReceiptTest {
 
         String output = receipt.printReceipt();
 
-        assertThat(output).contains(
-                "milk\t10.0\t2\t20.0\n",
+        CharSequence[] charSequences = {"milk\t10.0\t2\t20.0\n",
                 "biscuits\t5.0\t5\t25.0\n",
                 "chocolate\t20.0\t1\t20.0\n",
                 "Sales Tax\t6.5",
-                "Total Amount\t71.5"
+                "Total Amount\t71.5"};
+        assertThat(output).contains(
+                charSequences
         );
     }
 
