@@ -7,10 +7,10 @@ package org.katas.refactoring;
  * total sales tax) and prints it.
  */
 public class OrderReceipt {
-    private Order o;
+    private Order order;
 
-    public OrderReceipt(Order o) {
-        this.o = o;
+    public OrderReceipt(Order order) {
+        this.order = order;
     }
 
     public String printReceipt() {
@@ -43,8 +43,8 @@ public class OrderReceipt {
     }
 
     private void dataBillName(StringBuilder output) {
-        output.append(o.getCustomerName());
-        output.append(o.getCustomerAddress());
+        output.append(order.getCustomerName());
+        output.append(order.getCustomerAddress());
     }
 
     private void printHeaders(StringBuilder output) {
@@ -71,7 +71,7 @@ public class OrderReceipt {
         public LineItems invoke() {
             totSalesTx = 0d;
             tot = 0d;
-            for (LineItem lineItem : o.getLineItems()) {
+            for (LineItem lineItem : order.getLineItems()) {
                 output.append(lineItem.getDescription());
                 output.append('\t');
                 output.append(lineItem.getPrice());
